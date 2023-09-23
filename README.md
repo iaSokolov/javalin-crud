@@ -1,2 +1,1 @@
-# javalin-crud
-Javalin CRUD application
+# Javalin CRUD application
