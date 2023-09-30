@@ -92,7 +92,7 @@ jooq {
                     name = "org.jooq.codegen.DefaultGenerator"
                     database.apply {
                         name = "org.jooq.meta.postgres.PostgresDatabase"
-                        includes = "author"
+                        includes = "author|book"
                         forcedTypes = listOf(
                             ForcedType().apply {
                                 name = "varchar"
