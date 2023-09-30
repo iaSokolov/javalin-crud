@@ -21,18 +21,18 @@ class BookService {
         return bookRepository.getAll(context)
     }
 
-    fun create(author: Book): Book {
+    fun create(book: Book): Book {
         return DataSource().getConnection().use { connection ->
             this.create(
-                author = author,
+                book = book,
                 context = DataSourceContext(connection).getContext()
             )
         }
     }
 
-    fun create(author: Book, context: DSLContext): Book {
+    fun create(book: Book, context: DSLContext): Book {
         return bookRepository.create(
-            model = author,
+            model = book,
             context = context
         )
     }

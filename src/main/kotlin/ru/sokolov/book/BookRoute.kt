@@ -24,8 +24,18 @@ class BookRoute {
 
         app.post("/book") { ctx ->
             val bookDraft = objectMapper.readValue(ctx.body(), BookDto::class.java)
-            val authorNew = bookController.create(bookDraft)
-            val json = objectMapper.writeValueAsString(authorNew)
+            val bookNew = bookController.new(bookDraft)
+            val json = objectMapper.writeValueAsString(bookNew)
+
+            ctx.status(HttpStatus.CREATED)
+            ctx.contentType(ContentType.JSON)
+            ctx.result(json)
+        }
+
+        app.post("/book/create") { ctx ->
+            val bookDraft = objectMapper.readValue(ctx.body(), BookCreateDto::class.java)
+            val bookNew = bookController.create(bookDraft)
+            val json = objectMapper.writeValueAsString(bookNew)
 
             ctx.status(HttpStatus.CREATED)
             ctx.contentType(ContentType.JSON)
